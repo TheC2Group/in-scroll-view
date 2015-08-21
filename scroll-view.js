@@ -10,7 +10,7 @@ var VIEW = (function ($) {
     'use strict';
 
     function debounce(fn) {
-        if (!requestAnimationFrame) {
+        if (typeof requestAnimationFrame === 'undefined') {
             return fn;
         }
 
