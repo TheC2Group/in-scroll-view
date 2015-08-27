@@ -1,0 +1,25 @@
+{
+  "name": "in-scroll-view",
+  "version": "2.0.0",
+  "description": "Keep track of whether an element is in view or out of view.",
+  "main": "in-scroll-view.js",
+  "dependencies": {
+    "jquery": "^2.1.4",
+    "bloody-debounce-af": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "standalone": "browserify in-scroll-view.js --outfile standalone/in-scroll-view.js --standalone VIEW --exclude jquery",
+    "dist": "uglifyjs standalone/in-scroll-view.js --output standalone/in-scroll-view.min.js --comments"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:TheC2Group/in-scroll-view.git"
+  },
+  "keywords": [
+    "scroll",
+    "viewport"
+  ],
+  "author": "The C2 Group",
+  "license": "MIT"
+}

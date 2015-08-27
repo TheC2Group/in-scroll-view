@@ -1,6 +1,7 @@
 {
     "browser": true,
-    "jquery": true,
+    "node": true,
+    "jquery": false,
     "bitwise": true,
     "camelcase": true,
     "curly": false,
@@ -14,6 +15,7 @@
     "quotmark": "single",
     "undef": true,
     "unused": true,
-    "strict": true,
-    "trailing": true
+    "strict": false,
+    "trailing": true,
+    "predef": ["jQuery"]
 }

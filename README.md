@@ -1,9 +1,30 @@
-scroll-view
-===========
+in-scroll-view
+==============
 
 Keep track of whether an element is in view or out of view.
 
-Depends on jQuery.
+
+To get started
+--------------
+
+### CommonJS
+
+```
+$ npm install in-scroll-view
+```
+
+```js
+var VIEW = require('in-scroll-view');
+```
+
+### Browser Global
+
+```html
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="standalone/in-scroll-view.js"></script>
+```
+
+### Initialize
 
 ```js
 // these options are the default options so this wouldn't be necessary.
@@ -50,3 +71,9 @@ VIEW.onChange(function (item) {
 // remove all items
 VIEW.remove();
 ```
+
+
+License
+-------
+
+MIT © [The C2 Group](https://c2experience.com)
