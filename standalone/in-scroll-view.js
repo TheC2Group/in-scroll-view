@@ -10,7 +10,7 @@
 'use strict';
 
 var $ = (typeof window !== "undefined" ? window['jQuery'] : typeof global !== "undefined" ? global['jQuery'] : null);
-var debounce = require('bloody-debounce-af');
+var debounce = require('c2-debounce-af');
 
 var view = {};
 var collection = [];
@@ -163,56 +163,39 @@ view.onChange = function (cb) {
 module.exports = view;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"bloody-debounce-af":2}],2:[function(require,module,exports){
-var af = require("bloody-animationframe")
+},{"c2-debounce-af":2}],2:[function(require,module,exports){
+'use strict';
 
-module.exports = function(fn){
-  var id
-  return function(){
-    var args = arguments
-    if(id != null) {
-      af.cancelAnimationFrame(id)
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+exports["default"] = function (fn) {
+    if (typeof window !== "undefined" && !(requestAnimationFrame in window)) {
+        return fn;
     }
-    id = af.requestAnimationFrame(function(){
-      fn.apply(null, args)
-      id = null
-    })
-  }
-}
 
-},{"bloody-animationframe":3}],3:[function(require,module,exports){
-var animationFrame = {}
-  , win = window
-  , requestAnimationFrame =
-      win.requestAnimationFrame ||
-      win.webkitRequestAnimationFrame ||
-      win.mozRequestAnimationFrame ||
-      win.oRequestAnimationFrame ||
-      win.msRequestAnimationFrame ||
-      function(callback){
-        return setTimeout(function(){
-          callback()
-        }, 1000 / 60)
-      }
-  , cancelAnimationFrame =
-      win.cancelAnimationFrame ||
-      win.webkitCancelAnimationFrame ||
-      win.webkitCancelRequestAnimationFrame ||
-      win.mozCancelAnimationFrame ||
-      win.oCancelAnimationFrame ||
-      win.msCancelAnimationFrame ||
-      function(id){
-        clearTimeout(id)
-      }
+    var id = null;
 
-module.exports = {
-  requestAnimationFrame : function(){
-    return requestAnimationFrame.apply(window, arguments)
-  },
-  cancelAnimationFrame : function(){
-    return cancelAnimationFrame.apply(window, arguments)
-  },
-}
+    return function () {
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        if (id !== null) {
+            cancelAnimationFrame(id);
+        }
+
+        id = requestAnimationFrame(function () {
+            fn.apply(undefined, args);
+            id = null;
+        });
+    };
+};
+
+;
+module.exports = exports["default"];
+
 
 },{}]},{},[1])(1)
 });

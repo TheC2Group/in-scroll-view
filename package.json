@@ -1,11 +1,11 @@
 {
   "name": "in-scroll-view",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Keep track of whether an element is in view or out of view.",
   "main": "in-scroll-view.js",
   "dependencies": {
-    "jquery": "^2.1.4",
-    "bloody-debounce-af": "^1.0.0"
+    "c2-debounce-af": "^2.0.0",
+    "jquery": "^2.1.4"
   },
   "devDependencies": {
     "exposify": "^0.5.0"
