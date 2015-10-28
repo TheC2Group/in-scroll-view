@@ -1,16 +1,19 @@
 {
   "name": "in-scroll-view",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Keep track of whether an element is in view or out of view.",
   "main": "in-scroll-view.js",
   "dependencies": {
     "jquery": "^2.1.4",
     "bloody-debounce-af": "^1.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "exposify": "^0.5.0"
+  },
   "scripts": {
-    "standalone": "browserify in-scroll-view.js --outfile standalone/in-scroll-view.js --standalone VIEW --exclude jquery",
-    "dist": "uglifyjs standalone/in-scroll-view.js --output standalone/in-scroll-view.min.js --comments"
+    "standalone": "browserify -t [exposify --expose [ --jquery jQuery ] ] in-scroll-view.js --outfile standalone/in-scroll-view.js --standalone VIEW",
+    "dist": "uglifyjs standalone/in-scroll-view.js --output standalone/in-scroll-view.min.js --comments",
+    "build": "npm run standalone && npm run dist"
   },
   "repository": {
     "type": "git",
