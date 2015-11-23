@@ -1,15 +1,6 @@
-(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.VIEW = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-(function (global){
-/*!
- * In Scroll View
- * https://github.com/TheC2Group/in-scroll-view
- * @version 2.0.1
- * @license MIT (c) The C2 Group (c2experience.com)
- */
-
 'use strict';
 
-var $ = (typeof window !== "undefined" ? window['jQuery'] : typeof global !== "undefined" ? global['jQuery'] : null);
+var $ = require('jquery');
 var debounce = require('c2-debounce-af');
 
 var view = {};
@@ -18,13 +9,13 @@ var $w = $(window);
 var height = 0;
 var listeners = [];
 
-var broadcastChange = function (item) {
+var broadcastChange = function broadcastChange(item) {
     listeners.forEach(function (cb) {
         cb(item);
     });
 };
 
-var removeItem = function (item) {
+var removeItem = function removeItem(item) {
     var index = collection.indexOf(item);
 
     if (index > -1) {
@@ -38,8 +29,8 @@ var readScroll = debounce(function () {
     collection.forEach(function (item) {
         var percentInView;
 
-        var showFrom = (item.top < scrollTop) ? scrollTop - item.top : 0;
-        var showTo = (item.top + item.height > scrollTop + height) ? (scrollTop + height) - item.top : item.height;
+        var showFrom = item.top < scrollTop ? scrollTop - item.top : 0;
+        var showTo = item.top + item.height > scrollTop + height ? scrollTop + height - item.top : item.height;
 
         if (showFrom > 0 && showTo < item.height) {
             percentInView = 1;
@@ -47,7 +38,7 @@ var readScroll = debounce(function () {
             percentInView = (showTo - showFrom) / item.height;
         }
 
-        var status = (percentInView >= item.opts.percentInView) ? 'in' : 'out';
+        var status = percentInView >= item.opts.percentInView ? 'in' : 'out';
         if (status !== item.status) {
             if (item.opts.attr) {
                 item.$el.attr(item.opts.attr, status);
@@ -80,7 +71,7 @@ var itemDefaults = {
     lock: '' // 'in' or 'out'
 };
 
-var createItem = function ($el, opts) {
+var createItem = function createItem($el, opts) {
 
     var item = {
         $el: $el,
@@ -95,7 +86,7 @@ var createItem = function ($el, opts) {
 
 var windowBound = false;
 
-var bindWindow = function () {
+var bindWindow = function bindWindow() {
     if (windowBound) return;
 
     $w.on('resize load', measure);
@@ -104,7 +95,7 @@ var bindWindow = function () {
     windowBound = true;
 };
 
-var unbindWindow = function () {
+var unbindWindow = function unbindWindow() {
     if (!windowBound) return;
 
     $w.off('resize load', measure);
@@ -113,7 +104,7 @@ var unbindWindow = function () {
     windowBound = false;
 };
 
-var tryUnbindWindow = function () {
+var tryUnbindWindow = function tryUnbindWindow() {
     if (collection.length) return;
     unbindWindow();
 };
@@ -161,41 +152,3 @@ view.onChange = function (cb) {
 };
 
 module.exports = view;
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"c2-debounce-af":2}],2:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-exports["default"] = function (fn) {
-    if (typeof window !== "undefined" && !(requestAnimationFrame in window)) {
-        return fn;
-    }
-
-    var id = null;
-
-    return function () {
-        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-        }
-
-        if (id !== null) {
-            cancelAnimationFrame(id);
-        }
-
-        id = requestAnimationFrame(function () {
-            fn.apply(undefined, args);
-            id = null;
-        });
-    };
-};
-
-;
-module.exports = exports["default"];
-
-
-},{}]},{},[1])(1)
-});

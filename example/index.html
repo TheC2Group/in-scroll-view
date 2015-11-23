@@ -39,18 +39,6 @@
         <div class="section Teal" data-view="out"></div>
         <div class="section Aqua" data-view="out"></div>
 
-        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-        <script src="../standalone/in-scroll-view.min.js"></script>
-        <script>
-            VIEW.add('.section', {
-                percentInView: .5
-            });
-
-            VIEW.onChange(function (item) {
-                console.log(item.$el);
-                console.log(item.status);
-                // VIEW.remove(item);
-            });
-        </script>
+        <script src="js/bundle.js"></script>
     </body>
 </html>

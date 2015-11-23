@@ -1,14 +1,7 @@
-/*!
- * In Scroll View
- * https://github.com/TheC2Group/in-scroll-view
- * @version 2.0.2
- * @license MIT (c) The C2 Group (c2experience.com)
- */
-
 'use strict';
 
-var $ = require('jquery');
-var debounce = require('c2-debounce-af');
+import * as $ from 'jquery';
+import * as debounce from 'c2-debounce-af';
 
 var view = {};
 var collection = [];
@@ -158,4 +151,4 @@ view.onChange = function (cb) {
     listeners.push(cb);
 };
 
-module.exports = view;
+export default view;

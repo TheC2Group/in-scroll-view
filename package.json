@@ -1,19 +1,25 @@
 {
   "name": "in-scroll-view",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "Keep track of whether an element is in view or out of view.",
-  "main": "in-scroll-view.js",
+  "jsnext:main": "in-scroll-view.js",
+  "main": "cjs/in-scroll-view.js",
+  "export": "VIEW",
   "dependencies": {
     "c2-debounce-af": "^2.0.0",
     "jquery": "^2.1.4"
   },
   "devDependencies": {
-    "exposify": "^0.5.0"
+    "babel-preset-es2015-rollup": "^1.0.0",
+    "rollup": "^0.21.0",
+    "rollup-plugin-babel": "^2.1.0"
   },
   "scripts": {
-    "standalone": "browserify -t [exposify --expose [ --jquery jQuery ] ] in-scroll-view.js --outfile standalone/in-scroll-view.js --standalone VIEW",
-    "dist": "uglifyjs standalone/in-scroll-view.js --output standalone/in-scroll-view.min.js --comments",
-    "build": "npm run standalone && npm run dist"
+    "iife": "rollup -c rollup-iife.config.js",
+    "cjs": "rollup -c rollup-cjs.config.js",
+    "umd": "rollup -c rollup-umd.config.js",
+    "build": "npm run iife && npm run cjs && npm run umd",
+    "bundle-example": "browserify -e example/js/main.js -o example/js/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -24,5 +30,10 @@
     "viewport"
   ],
   "author": "The C2 Group",
-  "license": "MIT"
+  "license": "MIT",
+  "copyright": "(c) The C2 Group (c2experience.com)",
+  "bugs": {
+    "url": "https://github.com/TheC2Group/in-scroll-view/issues"
+  },
+  "homepage": "https://github.com/TheC2Group/in-scroll-view"
 }
