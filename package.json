@@ -1,6 +1,6 @@
 {
   "name": "in-scroll-view",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Keep track of whether an element is in view or out of view.",
   "jsnext:main": "in-scroll-view.js",
   "main": "cjs/in-scroll-view.js",
