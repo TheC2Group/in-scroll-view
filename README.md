@@ -20,7 +20,7 @@ var VIEW = require('in-scroll-view');
 ### Browser Global
 
 ```html
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
 <script src="TheC2Group/debounce-af.js"></script>
 <script src="iife/in-scroll-view.js"></script>
 ```
