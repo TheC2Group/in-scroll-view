@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+}
+
+.section {
+    height: 100vh;
+    opacity: .1;
+    transition: opacity 1s;
+}
+    .section[data-view="in"] {
+        opacity: 1;
+    }
+
+.Blue {
+    background: blue;
+}
+
+.Teal {
+    height: 50vh;
+    background: teal;
+}
+
+.Aqua {
+    background: aqua;
+}

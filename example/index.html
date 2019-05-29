@@ -4,34 +4,7 @@
         <meta charset="utf-8">
         <title>in-scroll-view</title>
         <meta name="viewport" content="initial-scale=1, width=device-width">
-        <style>
-        body {
-            margin: 0;
-        }
-
-        .section {
-            height: 100vh;
-            opacity: .1;
-            transition: opacity 1s;
-        }
-            .section[data-view="in"] {
-                opacity: 1;
-            }
-
-        .Blue {
-            background: blue;
-        }
-
-        .Teal {
-            height: 50vh;
-            background: teal;
-        }
-
-        .Aqua {
-            background: aqua;
-        }
-
-        </style>
+        <link rel="stylesheet" href="./css/index.css">
     </head>
     <body>
 
@@ -39,6 +12,6 @@
         <div class="section Teal" data-view="out"></div>
         <div class="section Aqua" data-view="out"></div>
 
-        <script src="js/bundle.js"></script>
+        <script src="./bundle/index.js"></script>
     </body>
 </html>
