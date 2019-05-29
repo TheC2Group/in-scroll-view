@@ -1,4 +1,6 @@
 import babel from 'rollup-plugin-babel';
+import resolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
 
 const pjson = require('./package.json');
 
@@ -12,15 +14,19 @@ const banner = `/*!
 const filename = pjson['jsnext:main'];
 
 export default {
-    entry: filename,
-    dest: `umd/${filename}`,
-    format: 'umd',
+    input: filename,
+    output: {
+        banner,
+        file: `umd/${filename}`,
+        format: 'umd',
+        globals: {
+            jquery: 'jQuery'
+        },
+        name: pjson['export'],
+    },
     plugins: [
-        babel()
-    ],
-    moduleName: pjson['export'],
-    banner,
-    globals: {
-        jquery: 'jQuery'
-    }
+        babel(),
+        resolve(),
+        commonjs()
+    ]
 };

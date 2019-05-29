@@ -1,7 +1,7 @@
 'use strict';
 
-import * as $ from 'jquery';
-import * as debounce from 'c2-debounce-af';
+import $ from 'jquery';
+import debounce from 'c2-debounce-af';
 
 var view = {};
 var collection = [];
