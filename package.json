@@ -5,15 +5,6 @@
   "jsnext:main": "in-scroll-view.js",
   "main": "cjs/in-scroll-view.js",
   "export": "VIEW",
-  "dependencies": {
-    "c2-debounce-af": "^2.0.0",
-    "jquery": "3.0.0"
-  },
-  "devDependencies": {
-    "babel-preset-es2015-rollup": "^1.0.0",
-    "rollup": "^0.21.0",
-    "rollup-plugin-babel": "^2.1.0"
-  },
   "scripts": {
     "iife": "rollup -c rollup-iife.config.js",
     "cjs": "rollup -c rollup-cjs.config.js",
@@ -35,5 +26,14 @@
   "bugs": {
     "url": "https://github.com/TheC2Group/in-scroll-view/issues"
   },
-  "homepage": "https://github.com/TheC2Group/in-scroll-view"
+  "homepage": "https://github.com/TheC2Group/in-scroll-view",
+  "dependencies": {
+    "c2-debounce-af": "^2.0.0",
+    "jquery": ">=3.4.0"
+  },
+  "devDependencies": {
+    "babel-preset-es2015-rollup": "^1.0.0",
+    "rollup": "^0.21.0",
+    "rollup-plugin-babel": "^2.1.0"
+  }
 }
