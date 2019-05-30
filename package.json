@@ -1,15 +1,12 @@
 {
   "name": "in-scroll-view",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Keep track of whether an element is in view or out of view.",
   "jsnext:main": "in-scroll-view.js",
   "main": "cjs/in-scroll-view.js",
   "export": "VIEW",
   "scripts": {
-    "iife": "rollup -c rollup-iife.config.js",
-    "cjs": "rollup -c rollup-cjs.config.js",
-    "umd": "rollup -c rollup-umd.config.js",
-    "build": "npm run iife && npm run cjs && npm run umd",
+    "build": "rollup -c rollup.config.js",
     "bundle-example": "browserify -e example/js/index.js -o example/bundle/index.js"
   },
   "repository": {
